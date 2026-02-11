@@ -1,107 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anamika Pradhan | Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anamika Pradhan | Data Science Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f5d4;
+            --secondary: #7c3aed;
+            --bg: #0f172a;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+            --text-muted: #94a3b8;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Inter',sans-serif;
-    scroll-behavior:smooth;
-}
+        body {
+            background-color: var(--bg);
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
-body{
-    background:#0f172a;
-    color:#fff;
-}
+        /* Ambient Glow Background */
+        .glow-bg {
+            position: fixed;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(0, 245, 212, 0.15), transparent 70%);
+            top: -20%;
+            left: -20%;
+            z-index: -1;
+            filter: blur(120px);
+            animation: float 10s infinite alternate;
+        }
 
-/* Gradient Background Glow */
-body::before{
-    content:"";
-    position:fixed;
-    width:600px;
-    height:600px;
-    background:radial-gradient(circle,#00f5d4,transparent 70%);
-    filter:blur(150px);
-    top:-200px;
-    left:-200px;
-    z-index:-1;
-}
+        .glow-bg-2 {
+            position: fixed;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.15), transparent 70%);
+            bottom: -10%;
+            right: -10%;
+            z-index: -1;
+            filter: blur(120px);
+            animation: float 12s infinite alternate-reverse;
+        }
 
-body::after{
-    content:"";
-    position:fixed;
-    width:600px;
-    height:600px;
-    background:radial-gradient(circle,#7c3aed,transparent 70%);
-    filter:blur(150px);
-    bottom:-200px;
-    right:-200px;
-    z-index:-1;
-}
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
 
-/* Navbar */
-nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 10%;
-    position:sticky;
-    top:0;
-    backdrop-filter:blur(10px);
-    background:rgba(15,23,42,0.6);
-}
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            background: rgba(15, 23, 42, 0.5);
+        }
 
-nav h1{
-    font-weight:700;
-    letter-spacing:1px;
-}
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
 
-nav ul{
-    display:flex;
-    gap:30px;
-    list-style:none;
-}
+        nav ul {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
 
-nav a{
-    text-decoration:none;
-    color:#fff;
-    transition:0.3s;
-}
+        nav a {
+            text-decoration: none;
+            color: #cbd5e1;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            position: relative;
+        }
 
-nav a:hover{
-    color:#00f5d4;
-}
+        nav a:hover { color: var(--primary); }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after { width: 100%; }
 
-/* Hero */
-.hero{
-    height:90vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    text-align:center;
-}
+        /* Hero Section */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+        }
 
-.hero h2{
-    font-size:3rem;
-    font-weight:700;
-}
+        .hero h2 {
+            font-size: clamp(2.5rem, 6vw, 5rem); /* Responsive font size */
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
 
-.typing{
-    color:#00f5d4;
-    margin-top:10px;
-    font-size:1.3rem;
-}
+        .hero h2 span {
+            color: var(--primary); /* Highlight name */
+        }
 
-.btn{
-    margin-top:30px;
+        .typing-container {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            min-height: 1.6em;
+            font-weight: 300;
+        }
+
+        #typing {
+            color: #e2e8f0;
+            font-weight: 600;
+            border-right: 2px solid var(--primary);
+            padding-right: 5px;
+            animation: blink 0.75s step-end infinite;
+        }
+
+        @keyframes blink { 50% { border-color: transparent; } }
+
+        /* Buttons */
+        .btn {
+            margin-top: 40px;
+            padding: 16px 40px;
+            border-radius: 50px;
+            border: none;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 20px -10px var(--primary);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 30px -10px var(--primary);
+        }
+
+        /* Bento Grid Layout */
+        .container {
+            padding: 80px 10%;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 35px;
+            border-radius: 24px;
+            backdrop-filter: blur(12px);
+            transition: 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        /* Grid Spans */
+        .col-span-4 { grid-column: span 4; }
+        .col-span-6 { grid-column: span 6; }
+        .col-span-8 { grid-column: span 8; }
+        .col-span-12 { grid-column: span 12; }
+
+        /* Responsive Grid fixes */
+        @media (max-width: 900px) {
+            .col-span-4, .col-span-6, .col-span-8 { grid-column: span 12; }
+        }
+
+        .card:hover {
+            border-color: rgba(0, 245, 212, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -20px rgba(0,0,0,0.5);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Skill Pills */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: auto; /* Push to bottom of card */
+            padding-top: 20px;
+        }
+
+        .skill-tag {
+            background: rgba(0, 245, 212, 0.08);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 245, 212, 0.15);
+            transition: 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary);
+            color: #000;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid var(--border);
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hero { align-items: flex-start; text-align: left; }
+            .hero h2 { font-size: 3rem; }
+            .container { padding: 40px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow-bg"></div>
+    <div class="glow-bg-2"></div>
+
+    <nav>
+        <div class="logo">ANAMIKA.</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#project">Project</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h2>Hi, I'm <span>Anamika</span> 👋</h2>
+        <div class="typing-container">
+            I am <span id="typing"></span>
+        </div>
+        <button class="btn" onclick="document.getElementById('project').scrollIntoView()">Explore My Work</button>
+    </section>
+
+    <div class="container">
+        
+        <div class="card col-span-8" id="about">
+            <h3>🚀 About Me</h3>
+            <p>I am a passionate technology enthusiast bridging the gap between hardware and software. Currently, I am focused on building IoT solutions like an RFID Attendance System and deep-diving into Java to build robust backend applications.</p>
+        </div>
+
+        <div class="card col-span-4" id="goal">
+            <h3>🎯 Career Goal</h3>
+            <p>Aspiring <b>Data Scientist</b> focused on leveraging Machine Learning to extract actionable insights from complex datasets.</p>
+        </div>
+
+        <div class="card col-span-6" id="skills">
+            <h3>💻 Technical Arsenal</h3>
+            <p>My toolbelt for building and analyzing:</p>
+            <div class="skills-list">
+                <span class="skill-tag">HTML5</span>
+                <span class="skill-tag">C Programming</span>
+                <span class="skill-tag">Python (Basic)</span>
+                <span class="skill-tag">Java (Learning)</span>
+                <span class="skill-tag">Git & GitHub</span>
+                <span class="skill-tag">Data Analysis</span>
+            </div>
+        </div>
+
+        <div class="card col-span-6" id="project">
+            <h3>📡 Featured Project</h3>
+            <p style="margin-bottom: 10px;"><b>RFID Attendance System</b></p>
+            <p>An automated hardware-software integration that logs attendance using RFID tags and instantly updates a central Google Sheet database in real-time. Eliminates manual entry errors.</p>
+            <div class="skills-list">
+                <span class="skill-tag">IoT</span>
+                <span class="skill-tag">Google Sheets API</span>
+                <span class="skill-tag">Hardware</span>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        © 2026 Anamika Pradhan | Designed for the Future
+    </footer>
+
+    <script>
+        const texts = ["an Aspiring Data Scientist", "an RFID Developer", "a Java Learner", "a Problem Solver"];
+        let count = 0;
+        let index = 0;
+        let isDeleting = false;
+        const typingSpeed = 100;
+        const eraseSpeed = 50;
+        const pauseTime = 2000;
+
+        function type() {
+            const currentText = texts[count % texts.length];
+            
+            // Logic to determine if we are typing or deleting
+            const displayChar = isDeleting 
+                ? currentText.slice(0, --index) 
+                : currentText.slice(0, ++index);
+
+            document.getElementById("typing").textContent = displayChar;
+
+            if (!isDeleting && displayChar === currentText) {
+                // Finished typing word, pause then delete
+                isDeleting = true;
+                setTimeout(type, pauseTime);
+            } else if (isDeleting && displayChar === "") {
+                // Finished deleting, move to next word
+                isDeleting = false;
+                count++;
+                setTimeout(type, 500);
+            } else {
+                // Continue typing/deleting
+                setTimeout(type, isDeleting ? eraseSpeed : typingSpeed);
+            }
+        }
+
+        // Start the typing effect when the DOM is loaded
+        document.addEventListener("DOMContentLoaded", type);
+    </script>
+</body>
+</html>    margin-top:30px;
     padding:12px 30px;
     border-radius:30px;
     border:none;
