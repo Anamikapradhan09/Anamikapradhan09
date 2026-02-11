@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anamika Pradhan | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Floating 3D Background */
+body::before{
+    content:"";
+    position:fixed;
+    width:200%;
+    height:200%;
+    background: radial-gradient(circle at 20% 30%,rgba(255,255,255,0.1),transparent 30%),
+                radial-gradient(circle at 80% 70%,rgba(255,255,255,0.1),transparent 30%);
+    animation: moveBg 15s linear infinite;
+    z-index:-1;
+}
+@keyframes moveBg{
+    0%{transform:translate(0,0);}
+    50%{transform:translate(-50px,-50px);}
+    100%{transform:translate(0,0);}
+}
+
+/* Navbar */
+nav{
+    display:flex;
+    justify-content:space-between;
+    padding:20px 10%;
+    position:sticky;
+    top:0;
+    backdrop-filter:blur(10px);
+}
+
+nav h1{
+    font-weight:600;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#00f5d4;
+}
+
+/* Hero Section */
+.hero{
+    height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    perspective:1000px;
+}
+
+.hero h2{
+    font-size:3rem;
+    transform:rotateX(20deg);
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0) rotateX(20deg);}
+    50%{transform:translateY(-20px) rotateX(20deg);}
+}
+
+.hero p{
+    margin-top:20px;
+    font-size:1.2rem;
+    opacity:0.8;
+}
+
+/* Glass Card Section */
+.section{
+    padding:80px 10%;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:40px;
+}
+
+.card{
+    width:300px;
+    padding:30px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(15px);
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    transition:transform 0.4s;
+    transform-style:preserve-3d;
+}
+
+.card:hover{
+    transform:rotateY(15deg) rotateX(10deg) scale(1.05);
+}
+
+.card h3{
+    margin-bottom:15px;
+    color:#00f5d4;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:20px;
+    opacity:0.7;
+}
+
+/* Button */
+.btn{
+    margin-top:20px;
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    background:#00f5d4;
+    color:#000;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:white;
+    transform:scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h1>Anamika</h1>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#goal">Goal</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <h2>Hi, I'm Anamika Pradhan 👋</h2>
+    <p>Aspiring Data Scientist | RFID Project Developer | Java Learner</p>
+    <button class="btn">Explore My Work</button>
+</section>
+
+<section class="section" id="about">
+    <div class="card">
+        <h3>🚀 About Me</h3>
+        <p>Currently working on RFID Attendance System integrated with Google Sheets. Learning Java and improving coding skills.</p>
+    </div>
+
+    <div class="card">
+        <h3>💻 Skills</h3>
+        <p>C, HTML, Basic Python, Learning Java<br>Git & GitHub</p>
+    </div>
+
+    <div class="card">
+        <h3>📡 Project</h3>
+        <p>RFID Attendance System that automatically updates attendance in Google Sheets.</p>
+    </div>
+</section>
+
+<section class="section" id="goal">
+    <div class="card">
+        <h3>🎯 Career Goal</h3>
+        <p>I aim to become a Data Scientist and work with Machine Learning and Data Analysis to build intelligent systems.</p>
+    </div>
+</section>
+
+<footer>
+    © 2026 Anamika Pradhan | Built with ❤️
+</footer>
+
+</body>
+  </html>
