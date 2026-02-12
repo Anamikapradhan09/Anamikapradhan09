@@ -125,7 +125,7 @@
         }
 
         .hero h2 {
-            font-size: clamp(2.5rem, 6vw, 5rem); /* Responsive font size */
+            font-size: clamp(2.5rem, 6vw, 5rem);
             font-weight: 800;
             letter-spacing: -2px;
             margin-bottom: 15px;
@@ -133,7 +133,7 @@
         }
 
         .hero h2 span {
-            color: var(--primary); /* Highlight name */
+            color: var(--primary);
         }
 
         .typing-container {
@@ -198,13 +198,11 @@
             justify-content: flex-start;
         }
 
-        /* Grid Spans */
         .col-span-4 { grid-column: span 4; }
         .col-span-6 { grid-column: span 6; }
         .col-span-8 { grid-column: span 8; }
         .col-span-12 { grid-column: span 12; }
 
-        /* Responsive Grid fixes */
         @media (max-width: 900px) {
             .col-span-4, .col-span-6, .col-span-8 { grid-column: span 12; }
         }
@@ -231,12 +229,11 @@
             line-height: 1.7;
         }
 
-        /* Skill Pills */
         .skills-list {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
-            margin-top: auto; /* Push to bottom of card */
+            margin-top: auto;
             padding-top: 20px;
         }
 
@@ -348,8 +345,6 @@
 
         function type() {
             const currentText = texts[count % texts.length];
-            
-            // Logic to determine if we are typing or deleting
             const displayChar = isDeleting 
                 ? currentText.slice(0, --index) 
                 : currentText.slice(0, ++index);
@@ -357,244 +352,17 @@
             document.getElementById("typing").textContent = displayChar;
 
             if (!isDeleting && displayChar === currentText) {
-                // Finished typing word, pause then delete
                 isDeleting = true;
                 setTimeout(type, pauseTime);
             } else if (isDeleting && displayChar === "") {
-                // Finished deleting, move to next word
                 isDeleting = false;
                 count++;
                 setTimeout(type, 500);
             } else {
-                // Continue typing/deleting
                 setTimeout(type, isDeleting ? eraseSpeed : typingSpeed);
             }
         }
-
-        // Start the typing effect when the DOM is loaded
         document.addEventListener("DOMContentLoaded", type);
     </script>
 </body>
-</html>    margin-top:30px;
-    padding:12px 30px;
-    border-radius:30px;
-    border:none;
-    background:linear-gradient(45deg,#00f5d4,#7c3aed);
-    color:white;
-    font-weight:600;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.btn:hover{
-    transform:scale(1.1);
-}
-
-/* Sections */
-.section{
-    padding:100px 10%;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:40px;
-}
-
-.card{
-    width:320px;
-    padding:30px;
-    border-radius:20px;
-    background:rgba(255,255,255,0.05);
-    backdrop-filter:blur(20px);
-    border:1px solid rgba(255,255,255,0.1);
-    transition:0.4s;
-}
-
-.card:hover{
-    transform:translateY(-15px);
-    border:1px solid #00f5d4;
-}
-
-.card h3{
-    margin-bottom:15px;
-    color:#00f5d4;
-}
-
-footer{
-    text-align:center;
-    padding:40px;
-    opacity:0.6;
-}
-</style>
-</head>
-
-<body>
-
-<nav>
-    <h1>Anamika</h1>
-    <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#project">Project</a></li>
-        <li><a href="#goal">Goal</a></li>
-    </ul>
-</nav>
-
-<section class="hero">
-    <h2>Hi, I'm Anamika Pradhan 👋</h2>
-    <div class="typing" id="typing"></div>
-    <button class="btn">View My Work</button>
-</section>
-
-<section class="section" id="about">
-    <div class="card">
-        <h3>🚀 About Me</h3>
-        <p>I am currently working on an RFID Attendance System integrated with Google Sheets and learning Java to improve my programming skills.</p>
-    </div>
-</section>
-
-<section class="section" id="skills">
-    <div class="card">
-        <h3>💻 Skills</h3>
-        <p>C<br>HTML<br>Python (Basic)<br>Java (Learning)<br>Git & GitHub</p>
-    </div>
-</section>
-
-<section class="section" id="project">
-    <div class="card">
-        <h3>📡 RFID Attendance System</h3>
-        <p>Automated attendance system using RFID technology with live data updates in Google Sheets.</p>
-    </div>
-</section>
-
-<section class="section" id="goal">
-    <div class="card">
-        <h3>🎯 Career Goal</h3>
-        <p>Aspiring Data Scientist aiming to work in Machine Learning and Data Analysis.</p>
-    </div>
-</section>
-
-<footer>
-    © 2026 Anamika Pradhan | Built with ❤️
-</footer>
-
-<script>
-const texts = ["Aspiring Data Scientist","RFID Project Developer","Java Learner"];
-let count = 0;
-let index = 0;
-let currentText = "";
-let letter = "";
-
-(function type(){
-    if(count === texts.length){
-        count = 0;
-    }
-    currentText = texts[count];
-    letter = currentText.slice(0, ++index);
-    document.getElementById("typing").textContent = letter;
-    if(letter.length === currentText.length){
-        count++;
-        index = 0;
-        setTimeout(type, 1000);
-    } else {
-        setTimeout(type, 100);
-    }
-})();
-</script>
-
-</body>
-</html>}
-
-.card{
-    width:300px;
-    padding:30px;
-    border-radius:20px;
-    background:rgba(255,255,255,0.1);
-    backdrop-filter:blur(15px);
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
-    transition:transform 0.4s;
-    transform-style:preserve-3d;
-}
-
-.card:hover{
-    transform:rotateY(15deg) rotateX(10deg) scale(1.05);
-}
-
-.card h3{
-    margin-bottom:15px;
-    color:#00f5d4;
-}
-
-/* Footer */
-footer{
-    text-align:center;
-    padding:20px;
-    opacity:0.7;
-}
-
-/* Button */
-.btn{
-    margin-top:20px;
-    padding:12px 30px;
-    border:none;
-    border-radius:30px;
-    background:#00f5d4;
-    color:#000;
-    font-weight:600;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.btn:hover{
-    background:white;
-    transform:scale(1.1);
-}
-</style>
-</head>
-
-<body>
-
-<nav>
-    <h1>Anamika</h1>
-    <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#goal">Goal</a></li>
-    </ul>
-</nav>
-
-<section class="hero">
-    <h2>Hi, I'm Anamika Pradhan 👋</h2>
-    <p>Aspiring Data Scientist | RFID Project Developer | Java Learner</p>
-    <button class="btn">Explore My Work</button>
-</section>
-
-<section class="section" id="about">
-    <div class="card">
-        <h3>🚀 About Me</h3>
-        <p>Currently working on RFID Attendance System integrated with Google Sheets. Learning Java and improving coding skills.</p>
-    </div>
-
-    <div class="card">
-        <h3>💻 Skills</h3>
-        <p>C, HTML, Basic Python, Learning Java<br>Git & GitHub</p>
-    </div>
-
-    <div class="card">
-        <h3>📡 Project</h3>
-        <p>RFID Attendance System that automatically updates attendance in Google Sheets.</p>
-    </div>
-</section>
-
-<section class="section" id="goal">
-    <div class="card">
-        <h3>🎯 Career Goal</h3>
-        <p>I aim to become a Data Scientist and work with Machine Learning and Data Analysis to build intelligent systems.</p>
-    </div>
-</section>
-
-<footer>
-    © 2026 Anamika Pradhan | Built with ❤️
-</footer>
-
-</body>
-  </html>
+</html>
